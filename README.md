@@ -5,7 +5,7 @@
 ## Linear Regression to Predict MPG
 To idenitfy which variables in the dataset predict the mpg of MechaCar prototypes, I ran a multiple linear regression. 
 
-Code:
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R):
 lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,mechacar_mpg))
 
 By running a multiple linear regression, I was able to look at the variance of all the variables/coefficients against mpg. Considering the significance level (p) of 0.05, the analysis indicates that vehicle length (p=2.60e-12) and ground clearance (p=5.21e-08) both provided a non-random amount of variance to mpg, Image 1. Vehicle length and ground clearance both have p-values or significance levels of less than 0.05, indicating these two variables are significant in predicting mpc of MechaCar prototypes. 
@@ -22,7 +22,7 @@ The design specification for the MechaCar suspension coils dictate that the vari
 
 First, I needed to find the suspension coil's PSI across all manfacturing lots, Table 1. 
 
-Code:
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R):
 total_summary <- suspension_coil %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI))
 
 ### Table 1: Total Summary Table
@@ -30,7 +30,7 @@ total_summary <- suspension_coil %>% summarize(Mean=mean(PSI),Median=median(PSI)
 
 In the total summary table you can see that the variance is 62.3, which is less than 100. Therefore, overall the lots combined variance meet the specifications. Then I wanted to look at each manufacturing lots mean, median, variance, and standard deviation individually of the suspension coil's PSI, Table 2. 
 
-Code:
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R):
 lot_summary <- suspension_coil %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI))
 
 ### Table 2: Lot Summary Table
@@ -43,7 +43,7 @@ To summarize, the variance of all the lots combined meet the specifications for 
 ## T-Tests on Suspension Coils
 To determine if all the manufacturing lots and each lot individually are statistically different from the population mean of 1,500 pounds per square inch I used the one sample t-test. First, I looked at all the manufacturing lots, Image 2. 
 
-Code: 
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R): 
 t.test(suspension_coil$PSI,mu=1500)
 
 ### Image 2: One Sample t-Test for all Lots
@@ -53,7 +53,7 @@ From the analysis, the p-value for all the manufacturing lots is greater than th
 
 I needed to use the subset() function in my original t-test script and then specify which lot I wanted to run the analysis on, Image 3. 
 
-Code: 
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R): 
 t.test(subset(suspension_coil,Manufacturing_Lot=='Lot1')$PSI,mu=1500)
 
 ### Image 3: One Sample t-Test for Lot1
@@ -61,7 +61,7 @@ t.test(subset(suspension_coil,Manufacturing_Lot=='Lot1')$PSI,mu=1500)
 
 Once I ran the analysis, manufacturing lot 1 had a p-value of 1, also indicating it was not significantlly different from the population mean. To look at lots 2 and 3, I just needed to change the lot in the t-test script that I used for lot 1, to find the analysis for lots 2 and 3, Images 4 and 5. 
 
-Code: 
+[Code](https://github.com/mrma2318/MechaCar_Statistical_Analysis/blob/d57393c041c85610250ab32227ddfa3640672c7a/Starter_Code%20(1)/MechaCarChallenge.RScript.R): 
 t.test(subset(suspension_coil,Manufacturing_Lot=='Lot2')$PSI,mu=1500)
 
 t.test(subset(suspension_coil,Manufacturing_Lot=='Lot3')$PSI,mu=1500)
